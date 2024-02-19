@@ -247,14 +247,14 @@ if __name__ == "__main__":
                 ("ul", "", [
                     ("li", "e", "Item 1"),
                     ("li", "e", "Item 2"),
-                    ("li", "e", "Item 3")  # Fixed missing text for the last list item
+                    ("li", "e", "Item 3")
                 ]),
                 ("ul", "", [
                     ("ul", "", [
                         ("li", "e", "Item 1"),
                         ("li", "e", "Item 2"),
-                        ("li", "e", "Item 3")  # Fixed missing text for the last list item
-                    ])  # Fixed missing text for the last list item
+                        ("li", "e", "Item 3")
+                    ])
                 ]),
                 ("div", "class_name", [
                     ("div", "class_name", [
