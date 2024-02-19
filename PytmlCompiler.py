@@ -1,17 +1,27 @@
 def h1(text, class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
     if class_name:
-        return f"<h1 class='{class_name}'>{text}</h1>"
+        return f"{indentation}<h1 class='{class_name}'>{text}</h1>"
     else:
-        return f"<h1>{text}</h1>"
+        return f"{indentation}<h1>{text}</h1>"
 
 
 def button(text, class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
     if class_name:
-        return f"<button class='{class_name}'>{text}</button>"
+        return f"{indentation}<button class='{class_name}'>{text}</button>"
     else:
-        return f"<button>{text}</button>"
+        return f"{indentation}<button>{text}</button>"
+
+def img(src, alt='', cls='', indent_level=0):
+    indentation = " " * 4 * indent_level
+    class_attribute = f" class='{cls}'" if cls else ''
+    alt_attribute = f" alt='{alt}'" if alt else ''
+
+    return f"{indentation}<img src='{src}'{class_attribute}{alt_attribute}>"
 
 
+    
 def div(class_name='', children=None, indent_level=0):
     if children is None:
         children = []
@@ -40,10 +50,12 @@ def div(class_name='', children=None, indent_level=0):
 
 
 def p(text, class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
     if class_name:
-        return f"<p class='{class_name}'>{text}</p>"
+        return f"{indentation}<p class='{class_name}'>{text}</p>"
     else:
-        return f"<p>{text}</p>"
+        return f"{indentation}<p>{text}</p>"
+
 
 
 
@@ -79,10 +91,11 @@ def ul(class_name='', children=None, indent_level=0):
 
 
 def li(text, class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
     if class_name:
-        return f"<li class='{class_name}'>{text}</li>"
+        return f"{indentation}<li class='{class_name}'>{text}</li>"
     else:
-        return f"<li>{text}</li>"
+        return f"{indentation}<li>{text}</li>"
 
 
 
@@ -94,6 +107,7 @@ element_functions = {
     "p": p,
     "ul": ul,
     "li": li,
+    "img": img
 }
 
 
@@ -110,7 +124,7 @@ def compile_to_html(func, *args, **kwargs):
                     html_output = compile_to_html(element_function, *arg[1:], indent_level=indent_level + 1)
                     children.append(html_output)
                 else:
-                    raise ValueError(f"Invalid element type: {element_type}")
+                        raise ValueError(f"Invalid element type: {element_type}")
             else:
                 children.append(arg)
 
@@ -154,9 +168,10 @@ if __name__ == "__main__":
                 ("button", "nested-button", "Nested button"),
                 ("p", "", "This is nested content."),
                 ("ul", "", [
-                    ("li", "", "Item 1"),
-                    ("li", "", "Item 2"),
-                    ("li", "", "Item 3"),
+                    ("li", "e", "Item 1"),
+                    ("li", "e", "Item 1"),
+                    ("li", "e", "Item 1"),
+                    ("img", "")
                 ]),
             ]),
         ]),
