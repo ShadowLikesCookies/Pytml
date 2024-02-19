@@ -51,14 +51,14 @@ def ul(class_name='', children=None, indent_level=0):
     if children is None:
         children = []
 
-    # Generate indentation
+
     indentation = " " * 4 * indent_level
 
-    # Opening and closing tags for ul
+
     opening_tag = f"{indentation}<ul class='{class_name}'>" if class_name else f"{indentation}<ul>"
     closing_tag = f"{indentation}</ul>"
 
-    # Convert children to HTML elements
+
     html_children = []
     for child in children:
         if isinstance(child, tuple):
@@ -72,7 +72,7 @@ def ul(class_name='', children=None, indent_level=0):
         else:
             raise ValueError("Invalid child element for ul: only tuples are allowed")
 
-    # Join children with proper indentation
+
     indented_children = '\n'.join(html_children)
 
     return f"{opening_tag}\n{indented_children}\n{closing_tag}"
@@ -86,7 +86,7 @@ def li(text, class_name='', indent_level=0):
 
 
 
-# Dictionary to map element types to their respective functions
+
 element_functions = {
     "h1": h1,
     "button": button,
@@ -114,10 +114,8 @@ def compile_to_html(func, *args, **kwargs):
             else:
                 children.append(arg)
 
-        # Call the function with children
         html_output = func(*children, indent_level=indent_level, **kwargs)
     else:
-        # Call the function without children
         html_output = func(indent_level=indent_level, **kwargs)
 
     return html_output
@@ -155,7 +153,7 @@ if __name__ == "__main__":
             ("div", "inner-div", [
                 ("button", "nested-button", "Nested button"),
                 ("p", "", "This is nested content."),
-                ("ul", "", [  # Add a new nested element, an unordered list
+                ("ul", "", [
                     ("li", "", "Item 1"),
                     ("li", "", "Item 2"),
                     ("li", "", "Item 3"),

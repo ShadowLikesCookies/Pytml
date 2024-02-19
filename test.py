@@ -7,7 +7,7 @@ if __name__ == "__main__":
             ("div", "inner-div", [
                 ("button", "nested-button", "Nested button"),
                 ("p", "", "This is nested content."),
-                ("ul", "", [  # Add a new nested element, an unordered list
+                ("ul", "", [
                     ("li", "", "Item 1"),
                     ("li", "", "Item 2"),
                     ("li", "", "Item 3"),
