@@ -10,18 +10,20 @@ def button(text, cls=''):
     else:
         return f"<button>{text}</button>"
 
-def div(cls='', children=None):
+def div(cls='', children=None, indent_level=0):
     if children is None:
         children = []
 
-    if cls:
-        children_html = ''.join(children)
-        return f"<div class='{cls}'>{children_html}</div>\n"
-    else:
-        children_html = ''.join(children)
-        return f"<div>{children_html}</div>\n"
+    indentation = " " * 4 * indent_level
+    opening_tag = f"{indentation}<div class='{cls}'>" if cls else f"{indentation}<div>"
+    closing_tag = f"{indentation}</div>"
+
+    indented_children = '\n'.join([f"{indentation}    {child}" for child in children])
+
+    return f"{opening_tag}\n{indented_children}\n{closing_tag}"
 
 
+# HTML "compiler"
 element_functions = {
     "h1": h1,
     "button": button,
@@ -63,7 +65,7 @@ def compile_and_append_to_list(args, filename):
             raise ValueError(f"Invalid element type: {element_type}")
     with open(filename, "w") as file:
         for html_output in html_outputs:
-            file.write(html_output + "\n\n")  # Add newline after each <div> element
+            file.write(html_output + "\n")  # Add newline after each <div> element
 
 def main(*args):
     compile_and_append_to_list(args, "output.html")
@@ -78,5 +80,5 @@ if __name__ == "__main__":
             "<button class='my-button-class'>Click me with class</button>",
             "<h1 class='my-class'>Hello, World!</h1>"
         ]),
-        ("div", "", ["useful"])
+
     )
