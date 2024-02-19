@@ -6,6 +6,14 @@ def h1(text, class_name='', indent_level=0):
         return f"{indentation}<h1>{text}</h1>"
 
 
+def a(href='', text='', class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
+    if class_name:
+        return f"{indentation}<a href='{href}' class='{class_name}'>{text}</a>"
+    else:
+        return f"{indentation}<a href='{href}'>{text}</a>"
+
+
 def button(text, class_name='', indent_level=0):
     indentation = " " * 4 * indent_level
     if class_name:
@@ -13,15 +21,18 @@ def button(text, class_name='', indent_level=0):
     else:
         return f"{indentation}<button>{text}</button>"
 
-def img(src, alt='', cls='', indent_level=0):
+
+def img(src, alt='', cls='', indent_level=0, children=None):
     indentation = " " * 4 * indent_level
     class_attribute = f" class='{cls}'" if cls else ''
     alt_attribute = f" alt='{alt}'" if alt else ''
 
+    if children:
+        raise ValueError("img tag cannot have nested elements.")
+
     return f"{indentation}<img src='{src}'{class_attribute}{alt_attribute}>"
 
 
-    
 def div(class_name='', children=None, indent_level=0):
     if children is None:
         children = []
@@ -57,19 +68,62 @@ def p(text, class_name='', indent_level=0):
         return f"{indentation}<p>{text}</p>"
 
 
-
-
 def ul(class_name='', children=None, indent_level=0):
     if children is None:
         children = []
 
+    indentation = " " * 4 * indent_level
+
+    opening_tag = f"{indentation}<ul class='{class_name}'>\n" if class_name else f"{indentation}<ul>\n"
+    closing_tag = f"{indentation}</ul>"
+
+    html_children = []
+    for child in children:
+        if isinstance(child, tuple):
+            element_type, *element_args = child
+            if element_type in element_functions:
+                if element_type == 'img':  # Check if the element type is img
+                    html_child = compile_to_html(element_functions[element_type], *element_args,
+                                                 indent_level=indent_level, children=None)  # Pass None for children
+                else:
+                    html_child = compile_to_html(element_functions[element_type], *element_args,
+                                                 indent_level=indent_level + 1)  # Adjust indent level for other elements
+                html_children.append(html_child)
+            else:
+                raise ValueError(f"Invalid element type: {element_type}")
+        else:
+            html_children.append(f"{indentation}    <li>{child}</li>")
+
+    indented_children = '\n'.join(html_children)
+
+    return f"{opening_tag}{indented_children}\n{closing_tag}"
+
+
+
+def li(text, class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
+    if class_name:
+        return f"{indentation}<li class='{class_name}'>{text}</li>"
+    else:
+        return f"{indentation}<li>{text}</li>"
+
+
+def span(text='', class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
+    if class_name:
+        return f"{indentation}<span class='{class_name}'>{text}</span>"
+    else:
+        return f"{indentation}<span>{text}</span>"
+
+
+def form(action='', method='post', class_name='', children=None, indent_level=0):
+    if children is None:
+        children = []
 
     indentation = " " * 4 * indent_level
 
-
-    opening_tag = f"{indentation}<ul class='{class_name}'>" if class_name else f"{indentation}<ul>"
-    closing_tag = f"{indentation}</ul>"
-
+    opening_tag = f"{indentation}<form action='{action}' method='{method}' class='{class_name}'>\n" if class_name else f"{indentation}<form action='{action}' method='{method}'>\n"
+    closing_tag = f"{indentation}</form>"
 
     html_children = []
     for child in children:
@@ -82,22 +136,39 @@ def ul(class_name='', children=None, indent_level=0):
             else:
                 raise ValueError(f"Invalid element type: {element_type}")
         else:
-            raise ValueError("Invalid child element for ul: only tuples are allowed")
-
+            html_children.append(f"{indentation}    {child}")
 
     indented_children = '\n'.join(html_children)
 
-    return f"{opening_tag}\n{indented_children}\n{closing_tag}"
+    return f"{opening_tag}{indented_children}\n{closing_tag}"
 
 
-def li(text, class_name='', indent_level=0):
+def input(type_='text', id_='', class_name='', attributes=None, indent_level=0):
     indentation = " " * 4 * indent_level
+    attributes_str = ''
+
+    # Constructing attributes string
+    if id_:
+        attributes_str += f" id='{id_}'"
     if class_name:
-        return f"{indentation}<li class='{class_name}'>{text}</li>"
-    else:
-        return f"{indentation}<li>{text}</li>"
+        attributes_str += f" class='{class_name}'"
+    if attributes:
+        for key, value in attributes.items():
+            attributes_str += f" {key}='{value}'"
+
+    # Constructing input tag with attributes
+    return f"{indentation}<input type='{type_}'{attributes_str}>"
 
 
+def label(text='', for_id='', class_name='', indent_level=0):
+    indentation = " " * 4 * indent_level
+    attributes = ''
+    if for_id:
+        attributes += f" for='{for_id}'"
+    if class_name:
+        attributes += f" class='{class_name}'"
+
+    return f"{indentation}<label{attributes}>{text}</label>"
 
 
 element_functions = {
@@ -107,8 +178,14 @@ element_functions = {
     "p": p,
     "ul": ul,
     "li": li,
-    "img": img
+    "img": img,
+    "a": a,
+    "span": span,
+    "form": form,
+    "label": label,
+    "input": input,
 }
+
 
 
 def compile_to_html(func, *args, **kwargs):
@@ -169,10 +246,24 @@ if __name__ == "__main__":
                 ("p", "", "This is nested content."),
                 ("ul", "", [
                     ("li", "e", "Item 1"),
-                    ("li", "e", "Item 1"),
-                    ("li", "e", "Item 1"),
-                    ("img", "")
+                    ("li", "e", "Item 2"),
+                    ("li", "e", "Item 3")  # Fixed missing text for the last list item
                 ]),
-            ]),
-        ]),
+                ("ul", "", [
+                    ("ul", "", [
+                        ("li", "e", "Item 1"),
+                        ("li", "e", "Item 2"),
+                        ("li", "e", "Item 3")  # Fixed missing text for the last list item
+                    ])  # Fixed missing text for the last list item
+                ]),
+                ("div", "class_name", [
+                    ("div", "class_name", [
+                        ("div", "class_name", [
+                            ("p", "", "This is nested content."),
+                        ])
+                    ])
+                ])
+            ])
+        ])
     )
+
