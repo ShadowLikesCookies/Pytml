@@ -159,6 +159,11 @@ def input(type_='text', id_='', class_name='', attributes=None, indent_level=0):
     # Constructing input tag with attributes
     return f"{indentation}<input type='{type_}'{attributes_str}>"
 
+def html_boilerplate(title='', lang='en', indent_level=0):
+    indentation = " " * 4 * indent_level
+    return f"{indentation}<!DOCTYPE html>\n{indentation}<html lang='{lang}'>\n{indentation}<head>\n{indentation}    " \
+           f"<meta charset='UTF-8'>\n{indentation}    <meta name='viewport' content='width=device-width, " \
+           f"initial-scale=1.0'>\n{indentation}    <title>{title}</title>\n{indentation}</head>\n{indentation}<body>\n{indentation}</body>\n{indentation}</html>"
 
 def label(text='', for_id='', class_name='', indent_level=0):
     indentation = " " * 4 * indent_level
@@ -184,13 +189,13 @@ element_functions = {
     "form": form,
     "label": label,
     "input": input,
+    "html_boilerplate": html_boilerplate,
 }
 
 
 
 def compile_to_html(func, *args, **kwargs):
     indent_level = kwargs.pop('indent_level', 0)
-
     if args:
         children = []
         for arg in args:
@@ -201,69 +206,35 @@ def compile_to_html(func, *args, **kwargs):
                     html_output = compile_to_html(element_function, *arg[1:], indent_level=indent_level + 1)
                     children.append(html_output)
                 else:
-                        raise ValueError(f"Invalid element type: {element_type}")
+                    raise ValueError(f"Invalid element type: {element_type}")
             else:
                 children.append(arg)
-
-        html_output = func(*children, indent_level=indent_level, **kwargs)
     else:
-        html_output = func(indent_level=indent_level, **kwargs)
-
+        children.append('')
+    html_output = func(*children, indent_level=indent_level, **kwargs)
     return html_output
-
 
 def write_to_file(html_output, filename):
     with open(filename, "w") as file:
         file.write(html_output)
 
-
-def compile_and_append_to_list(args, filename):
-    html_outputs = []
-    for arg in args:
-        element_type = arg[0]
-        if element_type in element_functions:
-            element_function = element_functions[element_type]
-            html_output = compile_to_html(element_function, *arg[1:])
-            html_outputs.append(html_output)
-        else:
-            raise ValueError(f"Invalid element type: {element_type}")
-    with open(filename, "w") as file:
-        for html_output in html_outputs:
-            file.write(html_output + "\n")
-
+def compile_and_append_to_list(element, filename):
+    element_type, *args = element
+    if element_type not in element_functions:
+        raise ValueError(f"Invalid element type: {element_type}")
+    html_output = compile_to_html(element_functions[element_type], *args)
+    write_to_file(html_output, filename)
 
 def main(*args):
-    compile_and_append_to_list(args, "output.html")
+    if len(args) != 1:
+        raise ValueError("Expected a single top-level element.")
+    compile_and_append_to_list(args[0], "output.html")
 
-
-if __name__ == "__main__":
-    main(
-        ("div", "", [
-            ("button", "", "Click me!"),
-            ("h1", "", "Hello, World!"),
-            ("div", "inner-div", [
-                ("button", "nested-button", "Nested button"),
-                ("p", "", "This is nested content."),
-                ("ul", "", [
-                    ("li", "e", "Item 1"),
-                    ("li", "e", "Item 2"),
-                    ("li", "e", "Item 3")
-                ]),
-                ("ul", "", [
-                    ("ul", "", [
-                        ("li", "e", "Item 1"),
-                        ("li", "e", "Item 2"),
-                        ("li", "e", "Item 3")
-                    ])
-                ]),
-                ("div", "class_name", [
-                    ("div", "class_name", [
-                        ("div", "class_name", [
-                            ("p", "", "This is nested content."),
-                        ])
-                    ])
-                ])
-            ])
-        ])
-    )
-
+main(
+    ("html_boilerplate", "My Website"),
+    [
+        ("button", "", "Click me!"),
+        ("h1", "", "Hello, World!"),
+        # ... other elements
+    ]
+)
