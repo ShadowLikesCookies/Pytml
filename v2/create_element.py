@@ -1,7 +1,7 @@
 from write_to_file import write_to_file
 import atexit
 
-def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title=''):
+def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False):
     attributes = []
     if Class:
         attributes.append(f"class='{Class}'")
@@ -14,10 +14,8 @@ def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='')
     if Title:
         attributes.append(f"title='{Title}'")
 
-    element = f"<{tag} {" ".join(attributes)}>\n"
-    if Text:
-        element += f"    {Text}\n"
-    element += f"</{tag}>"
-    atexit.register(write_to_file, element)
+    element = f"<{tag} {" ".join(attributes)}>\n{Text}\n</{tag}>"
+    if not isinstance(element, str):
+        atexit.register(write_to_file, element)
     return element
 
