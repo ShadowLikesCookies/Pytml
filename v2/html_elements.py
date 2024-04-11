@@ -2,14 +2,18 @@ import atexit
 
 from create_element import create_element
 from write_to_file import write_to_file
-
+from ClassNameGenerator import generate_class_name
 class html:
     def h1_element(Text=None, Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False):
 
 
 
         attributes = []
-        if Class:
+        if Class == '':
+            rand_class = generate_class_name(length=12)
+            print(rand_class)
+            attributes.append(f"class='{rand_class}'")
+        elif Class:
             attributes.append(f"class='{Class}'")
         if ID:
             attributes.append(f"id='{ID}'")
@@ -25,7 +29,6 @@ class html:
             atexit.register(write_to_file, element)
         elif Is_Internal == True:
             element = create_element('h1', Text, Class, ID, Lang, Style, Title)
-            print(element)
         return element
 
     def p_element(Text=None, Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False):
@@ -47,8 +50,6 @@ class html:
             atexit.register(write_to_file, element)
         elif Is_Internal == True:
             element = create_element('p', Text, Class, ID, Lang, Style, Title)
-            element1 = create_element('p', element, Class, ID, Lang, Style, Title)
-            print(element)
         return element
 
     def div_element(Text=None, Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False):
@@ -73,6 +74,5 @@ class html:
         elif Is_Internal == True:
             element = create_element('div', Text, Class, ID, Lang, Style, Title)
             element1 = create_element('div', element, Class, ID, Lang, Style, Title)
-            print(element)
-        return element
 
+        return element
