@@ -19,16 +19,19 @@ def read_increment_write(FileName, Directory, class_value=0, id_value=0):
     with open(file_path, 'r') as file:
         data = json.load(file)
         value = data.get('id', 0)
+        value2 = data.get('class', 0)
 
     # Increment the id value
     value += 1
+    value2 += 1
 
     # Update the id value and class value in the JSON data
     data['id'] = value
-    data['class'] = class_value  # Update the class value separately
+    data['class'] = value2  # Update the class value separately
 
     # Write the updated JSON data back to the file
     with open(file_path, 'w') as file:
         json.dump(data, file)
 
-    return value
+    return [value, value2]
+

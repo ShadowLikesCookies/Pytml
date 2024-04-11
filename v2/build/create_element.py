@@ -32,7 +32,11 @@ def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='',
         print(f"Title Values Appended To Attributes for {tag}: {Title}")
 
     # Construct the HTML element string with the specified attributes and text
-    element = f"<{tag} {' '.join(attributes)}>\n{Text}\n</{tag}>"
+    if Is_Internal is False:
+        element = f"<{tag} {' '.join(attributes)}>\n{Text}\n</{tag}>"
+    elif Is_Internal is True:
+        element = f"<{tag} {' '.join(attributes)}>\n{Text}\n</{tag}>"
+
 
     # Register write_to_file function if element is not a string instance
     if not isinstance(element, str):
