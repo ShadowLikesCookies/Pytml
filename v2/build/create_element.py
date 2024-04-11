@@ -1,4 +1,4 @@
-from write_to_file import write_to_file
+from v2.build.write_to_file import *
 import atexit
 
 
@@ -20,7 +20,7 @@ def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='',
         attributes.append(f"title='{Title}'")
         print(f"Title Values Appended To Attributes for {tag}: {Title}")
 
-    element = f"<{tag} {" ".join(attributes)}>\n{Text}\n</{tag}>"
+    element = f"<{tag} {' '.join(attributes)}>\n{Text}\n</{tag}>"
     if not isinstance(element, str):
         print(f"Element String Instance: True; {element}")
         atexit.register(write_to_file, element)

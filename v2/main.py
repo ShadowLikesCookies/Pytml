@@ -1,3 +1,9 @@
-from html_elements import html
+from html_elements import *
+from v2.html_elements import *
 
-html.div_element(self=html.h1_element(Is_Internal=True))
+a = div_element(Text=h1_element(Text=p_element(Is_Internal=True), Is_Internal=True))
+
+
+
+
+
