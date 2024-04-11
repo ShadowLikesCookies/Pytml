@@ -1,0 +1,23 @@
+Index: v2/create_element.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from write_to_file import write_to_file\r\nimport atexit\r\n\r\ndef create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title=''):\r\n    attributes = []\r\n    if Class:\r\n        attributes.append(f\"class='{Class}'\")\r\n    if ID:\r\n        attributes.append(f\"id='{ID}'\")\r\n    if Lang:\r\n        attributes.append(f\"lang='{Lang}'\")\r\n    if Style:\r\n        attributes.append(f\"style='{Style}'\")\r\n    if Title:\r\n        attributes.append(f\"title='{Title}'\")\r\n\r\n    element = f\"<{tag} {\" \".join(attributes)}>\\n\"\r\n    if Text:\r\n        element += f\"    {Text}\\n\"\r\n    element += f\"</{tag}>\"\r\n    atexit.register(write_to_file, element)\r\n    return element\r\n\r\n
+===================================================================
+diff --git a/v2/create_element.py b/v2/create_element.py
+--- a/v2/create_element.py	
++++ b/v2/create_element.py	
+@@ -14,10 +14,12 @@
+     if Title:
+         attributes.append(f"title='{Title}'")
+ 
+-    element = f"<{tag} {" ".join(attributes)}>\n"
++    element = f"<{tag} {' '.join(filter(None, attributes))}>\n"
++    atexit.register(write_to_file, element)
+     if Text:
+         element += f"    {Text}\n"
++        atexit.register(write_to_file, element)
+     element += f"</{tag}>"
+-    atexit.register(write_to_file, element)
+     return element
+ 
++

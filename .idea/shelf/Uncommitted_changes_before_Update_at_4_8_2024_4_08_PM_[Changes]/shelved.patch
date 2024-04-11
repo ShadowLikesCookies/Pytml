@@ -1,0 +1,17 @@
+Index: v2/ElementFunc.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Element:\r\n    def __init__(self, tag, content='', **attributes):\r\n        self.tag = tag\r\n        self.content = content\r\n        self.attributes = attributes\r\n        self.children = []\r\n\r\n    def add_child(self, child_tag, child_content='', **child_attributes):\r\n        child = Element(child_tag, child_content, **child_attributes)\r\n        self.children.append(child)\r\n        return child\r\n\r\n    def __str__(self, indent=0):\r\n        element_str = \" \" * 4 * indent + f\"<{self.tag}\"\r\n        for key, value in self.attributes.items():\r\n            element_str += f\" {key}='{value}'\"\r\n        element_str += \">\\n\"\r\n\r\n        if self.content:\r\n            element_str += \" \" * 4 * (indent + 1) + self.content + \"\\n\"\r\n\r\n        for child in self.children:\r\n            element_str += child.__str__(indent + 1)\r\n\r\n        element_str += \" \" * 4 * indent + f\"</{self.tag}>\\n\"\r\n        return element_str\r\n\r\n# Example of chaining nested elements\r\nparent = Element('div', Class='container', ID=\"apple sauce\")\r\n(parent.add_child('h1', 'Heading 1', Class='heading')\r\n .add_child('p', 'Paragraph 1', Class='paragraph')\r\n .add_child('h2','text', Class=\"class\"))\r\n\r\n# Print the nested elements with proper indentation and line separation\r\nprint(parent.__str__())
+===================================================================
+diff --git a/v2/ElementFunc.py b/v2/ElementFunc.py
+--- a/v2/ElementFunc.py	
++++ b/v2/ElementFunc.py	
+@@ -31,5 +31,6 @@
+  .add_child('p', 'Paragraph 1', Class='paragraph')
+  .add_child('h2','text', Class="class"))
+ 
+-# Print the nested elements with proper indentation and line separation
++
++
+ print(parent.__str__())
+\ No newline at end of file
