@@ -1,7 +1,7 @@
 from v2.build.write_to_file import *
 
 # This list is sourced from https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
-ALLOWED_H1_ATTRIBUTES = {
+ALLOWED_A_ATTRIBUTES = {
     "accesskey",
     "class",
     "contenteditable",
@@ -16,13 +16,16 @@ ALLOWED_H1_ATTRIBUTES = {
     "style",
     "tabindex",
     "title",
-      # Duplicate for clarity
+    "translate",
+    "accesskey",  # Duplicate for clarity
+
+    # Data attributes
     "data-",
 }
 
-def h1_element(Text='', Class='', ID='', Lang='EN', Style='', Title='', Href='', Target='', Child_Element=False, accesskey='',
+def a_element(Text='', Class='', ID='', Lang='EN', Style='', Title='', Href='', Target='', Child_Element=False, accesskey='',
               access_key='', contenteditable='', contextmenu='', dir='', draggable='', dropzone='',
-              hidden='', tabindex='', translate=''):
+              hidden='', spellcheck='', tabindex='', translate=''):
     """
     This function generates an anchor element in HTML using f-strings.
 
@@ -44,6 +47,7 @@ def h1_element(Text='', Class='', ID='', Lang='EN', Style='', Title='', Href='',
         draggable (str, optional): Whether the element is draggable. Defaults to ''.
         dropzone (str, optional): The drop zone for the element. Defaults to ''.
         hidden (str, optional): Whether the element is hidden. Defaults to ''.
+        spellcheck (str, optional): Whether the element's spelling is checked. Defaults to ''.
         tabindex (str, optional): The tab index for the element. Defaults to ''.
         translate (str, optional): Whether the element's content is translated. Defaults to ''.
 
@@ -81,15 +85,17 @@ def h1_element(Text='', Class='', ID='', Lang='EN', Style='', Title='', Href='',
         attributes += f" dropzone='{dropzone}'"
     if hidden:
         attributes += f" hidden='{hidden}'"
+    if spellcheck:
+        attributes += f" spellcheck='{spellcheck}'"
     if tabindex:
         attributes += f" tabindex='{tabindex}'"
     if translate:
         attributes += f" translate='{translate}'"
 
     if Child_Element != True:
-        element = f"<h1{attributes}>{Text}</h1>"
+        element = f"<a{attributes}>{Text}</a>"
         write_to_file(element)
     elif Child_Element == True:
-        element = f"<h1{attributes}>{Text}</h1>"
+        element = f"<a{attributes}>{Text}</a>"
 
     return element

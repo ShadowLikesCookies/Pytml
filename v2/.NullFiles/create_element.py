@@ -3,13 +3,17 @@ from v2.build.write_to_file import *
 import atexit
 
 # Function to create an HTML element with specified attributes
-def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False):
+def create_element(tag, Text='', Class='', ID='', Lang='EN', Style='', Title='', Is_Internal=False, Image_URL=''):
     attributes = []
 
     # Check if Class is provided and append it to the attributes list
     if Class:
         attributes.append(f"class='{Class}'")
         print(f"Class Values Appended To Attributes for {tag}: {Class}")
+
+    if Image_URL:
+        attributes.append(f"src='{Image_URL}'")
+    print(f"Class Values Appended To Attributes for {tag}: {Image_URL}")
 
     # Check if ID is provided and append it to the attributes list
     if ID:
