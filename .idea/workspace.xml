@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376962fb-03bc-4f5b-932c-597b0c70604f" name="Changes" comment="Removed Auto Class Asignment and added Formatter.py">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_8_2024_4_08_PM__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="376962fb-03bc-4f5b-932c-597b0c70604f" name="Changes" comment="1">
+      <change afterPath="$PROJECT_DIR$/v2/css_creator/css_properties.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/v2/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/html_elements/li_element.py" beforeDir="false" afterPath="$PROJECT_DIR$/v2/html_elements/li_element.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/html_elements/p_element.py" beforeDir="false" afterPath="$PROJECT_DIR$/v2/html_elements/p_element.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/html_elements/ul_element.py" beforeDir="false" afterPath="$PROJECT_DIR$/v2/html_elements/ul_element.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/v2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/v2/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/v2/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/v2/css_creator/placeholder.py" beforeDir="false" afterPath="$PROJECT_DIR$/v2/css_creator/placeholder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,35 +51,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Formatter.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Pytml.executor&quot;: &quot;Run&quot;,
-    &quot;Python.PytmlCompiler.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Python.create_element.executor&quot;: &quot;Run&quot;,
-    &quot;Python.div_element.executor&quot;: &quot;Run&quot;,
-    &quot;Python.h1_element.executor&quot;: &quot;Run&quot;,
-    &quot;Python.html_elements.executor&quot;: &quot;Run&quot;,
-    &quot;Python.img_element.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.p_element.executor&quot;: &quot;Run&quot;,
-    &quot;Python.read_increment_write.executor&quot;: &quot;Run&quot;,
-    &quot;Python.write_to_file.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Shell Script.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;V2-1.0-ProductionRelease&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/moonl/Desktop/Pytml/v2/main.py&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "Python.Formatter.executor": "Run",
+    "Python.Pytml.executor": "Run",
+    "Python.PytmlCompiler.executor": "Run",
+    "Python.Unnamed.executor": "Run",
+    "Python.create_element.executor": "Run",
+    "Python.div_element.executor": "Run",
+    "Python.h1_element.executor": "Run",
+    "Python.html_elements.executor": "Run",
+    "Python.img_element.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.p_element.executor": "Run",
+    "Python.placeholder.executor": "Run",
+    "Python.python1.executor": "Run",
+    "Python.read_increment_write.executor": "Run",
+    "Python.write_to_file.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Shell Script.Unnamed.executor": "Run",
+    "git-widget-placeholder": "V2-1.0-ProductionRelease",
+    "last_opened_file_path": "C:/Users/moonl/Desktop/Pytml/v2/main.py",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\moonl\Desktop\Pytml\v2\.NullFiles" />
@@ -185,7 +184,7 @@
       <workItem from="1712853520222" duration="3028000" />
       <workItem from="1713083387752" duration="970000" />
       <workItem from="1713202157445" duration="5466000" />
-      <workItem from="1713242985635" duration="455000" />
+      <workItem from="1713242985635" duration="2526000" />
     </task>
     <task id="LOCAL-00001" summary="First errorless module with expected outputs completed.">
       <option name="closed" value="true" />
@@ -235,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713207671635</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1">
+      <option name="closed" value="true" />
+      <created>1713243528767</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1713243528767</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +251,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First errorless module with expected outputs completed." />
     <MESSAGE value="Removed Auto Class Asignment and added Formatter.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed Auto Class Asignment and added Formatter.py" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -258,16 +266,18 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Pytml$html_elements.coverage" NAME="html_elements Coverage Results" MODIFIED="1712585612219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/Pytml$div_element.coverage" NAME="div_element Coverage Results" MODIFIED="1712854328063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
     <SUITE FILE_PATH="coverage/Pytml$p_element.coverage" NAME="p_element Coverage Results" MODIFIED="1712854716601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
     <SUITE FILE_PATH="coverage/Pytml$Formatter.coverage" NAME="Formatter Coverage Results" MODIFIED="1712855743902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
-    <SUITE FILE_PATH="coverage/Pytml$img_element.coverage" NAME="img_element Coverage Results" MODIFIED="1713203684182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
-    <SUITE FILE_PATH="coverage/Pytml$read_increment_write.coverage" NAME="read_increment_write Coverage Results" MODIFIED="1712848108110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/build" />
+    <SUITE FILE_PATH="coverage/Pytml$python1.coverage" NAME="python1 Coverage Results" MODIFIED="1713244873580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/temp" />
     <SUITE FILE_PATH="coverage/Pytml$write_to_file.coverage" NAME="write_to_file Coverage Results" MODIFIED="1712849770842" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/build" />
     <SUITE FILE_PATH="coverage/Pytml$PytmlCompiler.coverage" NAME="PytmlCompiler Coverage Results" MODIFIED="1712845715949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Pytml$placeholder.coverage" NAME="placeholder Coverage Results" MODIFIED="1713245512587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/css_creator" />
+    <SUITE FILE_PATH="coverage/Pytml$main.coverage" NAME="main Coverage Results" MODIFIED="1713243347501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/Pytml$html_elements.coverage" NAME="html_elements Coverage Results" MODIFIED="1712585612219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
+    <SUITE FILE_PATH="coverage/Pytml$div_element.coverage" NAME="div_element Coverage Results" MODIFIED="1712854328063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
+    <SUITE FILE_PATH="coverage/Pytml$img_element.coverage" NAME="img_element Coverage Results" MODIFIED="1713203684182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
+    <SUITE FILE_PATH="coverage/Pytml$read_increment_write.coverage" NAME="read_increment_write Coverage Results" MODIFIED="1712848108110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/build" />
     <SUITE FILE_PATH="coverage/Pytml$h1_element.coverage" NAME="h1_element Coverage Results" MODIFIED="1712850782784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2/html_elements" />
-    <SUITE FILE_PATH="coverage/Pytml$main.coverage" NAME="main Coverage Results" MODIFIED="1713207189455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
     <SUITE FILE_PATH="coverage/Pytml$create_element.coverage" NAME="create_element Coverage Results" MODIFIED="1712585559409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/v2" />
   </component>
 </project>
