@@ -1,7 +1,7 @@
 
 import bs4
 import sys
-from v2.build.override_to_file import *
+from Pytml.v2.build.override_to_file import *
 
 def format_html(input_file):
     try:

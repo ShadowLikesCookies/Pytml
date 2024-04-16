@@ -1,4 +1,4 @@
-from v2.build.write_to_file import write_to_file
+from Pytml.v2.build.write_to_file import *
 
 
 def p_element(Child_Element=False, Text='', Class='', ID='', Lang='EN', Style='', Title='', Accesskey='',

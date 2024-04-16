@@ -1,4 +1,4 @@
-from v2.build.write_to_file import *
+from Pytml.v2.build.write_to_file import *
 
 # This list is sourced from https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 ALLOWED_H1_ATTRIBUTES = {
