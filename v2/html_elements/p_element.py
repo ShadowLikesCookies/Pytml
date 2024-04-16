@@ -1,39 +1,71 @@
-import atexit
-import os
+from v2.build.write_to_file import write_to_file
 
-from v2.build.create_element import *
-from v2.build.read_increment_write import read_increment_write
-from v2.build.write_to_file import *
 
-def p_element(Text=None, Class=None, ID=None, Lang='EN', Style='', Title='', Is_Internal=False):
-    # If Is_Internal is False, raise an error if Text is a function
-    if not Is_Internal:
-        if callable(Text):
-            raise ValueError("Error: Text input cannot be a function.")
+def p_element(Child_Element=False, Text='', Class='', ID='', Lang='EN', Style='', Title='', Accesskey='',
+              Contenteditable='', Contextmenu='', Dir='', Draggable='', Dropzone='', Hidden='', Spellcheck='',
+              Tabindex='', Translate=''):
+    """
+    This function generates a p element in HTML using f-strings.
 
-    attributes = []
+    Args:
+        Text (str, optional): The text content of the p element.
+        Class (str, optional): CSS class(es) for the p element.
+        ID (str, optional): The ID of the p element.
+        Lang (str, optional): The language of the p element content. Defaults to 'EN'.
+        Style (str, optional): Inline CSS styles for the p element.
+        Title (str, optional): The tooltip text displayed on hover.
+        Accesskey (str, optional): The access key for the p element.
+        Contenteditable (str, optional): Whether the p element is editable.
+        Contextmenu (str, optional): The context menu for the p element.
+        Dir (str, optional): The text direction for the p element.
+        Draggable (str, optional): Whether the p element is draggable.
+        Dropzone (str, optional): The drop zone for the p element.
+        Hidden (str, optional): Whether the p element is hidden.
+        Spellcheck (str, optional): Whether the p element is spellchecked.
+        Tabindex (str, optional): The tab index for the p element.
+        Translate (str, optional): Whether the p element is translated.
 
-    # If Class is provided, add it to the attributes list
-    # If Class is provided, add it to the attributes list
+    Returns:
+        str: The complete HTML string for the p element.
+    """
+    attributes = ""
+
+    # Add common attributes based on provided arguments
     if Class:
-        attributes.append(f"class='{Class}'")
-    # If ID is provided, add it to the attributes list
+        attributes += f" class='{Class}'"
     if ID:
-        attributes.append(f"id='{ID}'")
-    # Add Lang, Style, and Title to the attributes list if they are provided
+        attributes += f" id='{ID}'"
     if Lang:
-        attributes.append(f"lang='{Lang}'")
+        attributes += f" lang='{Lang}'"
     if Style:
-        attributes.append(f"style='{Style}'")
+        attributes += f" style='{Style}'"
     if Title:
-        attributes.append(f"title='{Title}'")
+        attributes += f" title='{Title}'"
+    if Accesskey:
+        attributes += f" accesskey='{Accesskey}'"
+    if Contenteditable:
+        attributes += f" contenteditable='{Contenteditable}'"
+    if Contextmenu:
+        attributes += f" contextmenu='{Contextmenu}'"
+    if Dir:
+        attributes += f" dir='{Dir}'"
+    if Draggable:
+        attributes += f" draggable='{Draggable}'"
+    if Dropzone:
+        attributes += f" dropzone='{Dropzone}'"
+    if Hidden:
+        attributes += f" hidden='{Hidden}'"
+    if Spellcheck:
+        attributes += f" spellcheck='{Spellcheck}'"
+    if Tabindex:
+        attributes += f" tabindex='{Tabindex}'"
+    if Translate:
+        attributes += f" translate='{Translate}'"
 
-    # If Is_Internal is not True, create the p element, write it to the file, and return it
-    if Is_Internal != True:
-        element = create_element('p', Text, Class, ID, Lang, Style, Title, Is_Internal)
+    if Child_Element != False:
+        element = f"<p{attributes}>{Text}</p>"
         write_to_file(element)
-    # If Is_Internal is True, create the p element and return it without writing to the file
-    elif Is_Internal == True:
-        element = create_element('p', Text, Class, ID, Lang, Style, Title, Is_Internal)
+    if Child_Element == False:
+        element = f"<p{attributes}>{Text}</p>"
 
     return element
