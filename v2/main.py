@@ -5,7 +5,7 @@ from Formatter import prettify
 from Pytml.v2.css_creator.placeholder import *
 # Create a complex HTML structure using div_element, h1_element, and p_element
 
-div_element(
+a_element(
     Text='This is a div element' + h1_element(Text=f"Cool {h1_element(Child_Element=True)}", Child_Element=True),
     Class='my-class',
     ID='my-id',

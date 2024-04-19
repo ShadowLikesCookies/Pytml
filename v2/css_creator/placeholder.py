@@ -9,7 +9,7 @@ def generateCSS(ElementSelectorType, Decorators="", file_path='css_properties.js
     file_path = os.path.join(os.path.dirname(__file__), file_path)  # Get the absolute path to css_properties.json
     directory = 'v2'
     file_name = 'style.css'
-    file_path2 = os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), directory)), file_name)
+    file_path2 = os.path.join(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)), file_name)
     print(f"File path2: {file_path2}")
 
     if not os.path.exists(directory):
@@ -29,7 +29,7 @@ def generateCSS(ElementSelectorType, Decorators="", file_path='css_properties.js
     css_dictionary = set(css_properties.keys())
 
     cssStruct = []
-    CssStartStructure = f"{ElementSelectorType}"
+    CssStartStructure = f"{ElementSelectorType}" + " {"
     if Decorators:
         CssStartStructure += f":{Decorators}"
     CssEndStructure = "}"
@@ -51,7 +51,7 @@ def generateCSS(ElementSelectorType, Decorators="", file_path='css_properties.js
     cssStruct.append(CssEndStructure)
 
     # Print the contents of cssStruct
-    print(f"CSS Struct: {cssStruct}")
+    print(f"CSS Struct:     {cssStruct}")
 
     # Write cssStruct to the style.css file
     for css in cssStruct:

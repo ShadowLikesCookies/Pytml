@@ -1,5 +1,5 @@
 from Pytml.v2.build.write_to_file import *
-
+from Pytml.v2.css_creator.placeholder import *
 # This list is sourced from https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes
 ALLOWED_A_ATTRIBUTES = {
     "accesskey",
@@ -64,7 +64,7 @@ def a_element(Text='', Class='', ID='', Lang='EN', Style='', Title='', Href='', 
     if Lang:
         attributes += f" lang='{Lang}'"
     if Style:
-        attributes += f" style='{Style}'"
+        attributes += f" style='{Style}"
     if Title:
         attributes += f" title='{Title}'"
     if Href:
